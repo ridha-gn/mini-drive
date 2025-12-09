@@ -61,25 +61,16 @@ function FileManager({ token, onLogout }) {
   }
 
   return (
-    <div style={{ maxWidth: '800px', margin: '50px auto', padding: '20px' }}>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-        <h1>My Files</h1>
-        <button onClick={onLogout} style={{ padding: '8px 16px', cursor: 'pointer' }}>
+    <div className="file-manager">
+      <div className="header">
+        <h1 className="title">My Files</h1>
+        <button onClick={onLogout} className="button button-secondary">
           Logout
         </button>
       </div>
 
-      <div style={{ marginTop: '20px', marginBottom: '30px' }}>
-        <label
-          style={{
-            display: 'inline-block',
-            padding: '10px 20px',
-            background: '#007bff',
-            color: 'white',
-            cursor: 'pointer',
-            borderRadius: '4px',
-          }}
-        >
+      <div className="upload-section">
+        <label className="upload-label">
           {uploading ? 'Uploading...' : 'Upload File'}
           <input
             type="file"
@@ -92,25 +83,29 @@ function FileManager({ token, onLogout }) {
       </div>
 
       {files.length === 0 ? (
-        <p>No files uploaded yet.</p>
+        <div className="empty-state">
+          <div className="empty-state-icon"></div>
+          <p>No files uploaded yet</p>
+          <p style={{ fontSize: '14px', marginTop: '10px' }}>Upload your first file to get started</p>
+        </div>
       ) : (
-        <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+        <table className="file-table">
           <thead>
-            <tr style={{ borderBottom: '2px solid #ddd' }}>
-              <th style={{ textAlign: 'left', padding: '10px' }}>Filename</th>
-              <th style={{ textAlign: 'left', padding: '10px' }}>Uploaded</th>
-              <th style={{ textAlign: 'left', padding: '10px' }}>Action</th>
+            <tr>
+              <th>Filename</th>
+              <th>Uploaded</th>
+              <th>Action</th>
             </tr>
           </thead>
           <tbody>
             {files.map((file) => (
-              <tr key={file.id} style={{ borderBottom: '1px solid #eee' }}>
-                <td style={{ padding: '10px' }}>{file.filename}</td>
-                <td style={{ padding: '10px' }}>{new Date(file.uploaded_at).toLocaleDateString()}</td>
-                <td style={{ padding: '10px' }}>
+              <tr key={file.id}>
+                <td> {file.filename}</td>
+                <td>{new Date(file.uploaded_at).toLocaleDateString()}</td>
+                <td>
                   <button
                     onClick={() => handleDownload(file.id, file.filename)}
-                    style={{ padding: '5px 10px', cursor: 'pointer' }}
+                    className="download-button"
                   >
                     Download
                   </button>

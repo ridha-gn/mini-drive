@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import Login from './Login'
 import Signup from './Signup'
 import FileManager from './FileManager'
+import './styles.css'
 
 function App() {
   const [token, setToken] = useState(localStorage.getItem('token'))
@@ -25,8 +26,7 @@ function App() {
   }
 
   return (
-    <div style={{ maxWidth: '400px', margin: '50px auto', padding: '20px' }}>
-      <h1 style={{ textAlign: 'center' }}>Mini Drive</h1>
+    <div>
       {view === 'login' ? (
         <Login setToken={setToken} setView={setView} />
       ) : (

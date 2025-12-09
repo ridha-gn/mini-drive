@@ -15,3 +15,10 @@ frontend/.env.local
 # General
 .DS_Store
 *.log
+
+# Environment
+.env
+.env.production
+
+# Docker
+*.log

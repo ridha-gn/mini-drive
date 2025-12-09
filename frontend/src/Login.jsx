@@ -28,15 +28,17 @@ function Login({ setToken, setView }) {
   }
 
   return (
-    <div>
-      <h2>Login</h2>
-      <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+    <div className="container">
+      <h1 className="title">Mini Drive</h1>
+      <p className="subtitle">Welcome back! Please login to your account</p>
+      
+      <form onSubmit={handleSubmit} className="form">
         <input
           type="text"
           placeholder="Username"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
-          style={{ padding: '10px', fontSize: '14px' }}
+          className="input"
           required
         />
         <input
@@ -44,17 +46,19 @@ function Login({ setToken, setView }) {
           placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          style={{ padding: '10px', fontSize: '14px' }}
+          className="input"
           required
         />
-        <button type="submit" style={{ padding: '10px', fontSize: '14px', cursor: 'pointer' }}>
+        <button type="submit" className="button">
           Login
         </button>
       </form>
-      {error && <p style={{ color: 'red', marginTop: '10px' }}>{error}</p>}
-      <p style={{ marginTop: '20px', textAlign: 'center' }}>
+      
+      {error && <p className="error">{error}</p>}
+      
+      <p className="link-text">
         Don't have an account?{' '}
-        <span onClick={() => setView('signup')} style={{ color: 'blue', cursor: 'pointer' }}>
+        <span onClick={() => setView('signup')} className="link">
           Sign up
         </span>
       </p>

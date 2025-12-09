@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  backend:
+    build: ./backend
+    container_name: minidrive-backend
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend/uploads:/app/uploads
+      - ./backend/minidrive.db:/app/minidrive.db
+    restart: unless-stopped
+    environment:
+      - SECRET_KEY=change-this-in-production
+      - ALLOWED_ORIGINS=http://localhost:5173,http://localhost:5174

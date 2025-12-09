@@ -22,7 +22,7 @@ function Signup({ setView }) {
         throw new Error('Username already exists')
       }
 
-      setMessage('Account created successfully')
+      setMessage('Account created successfully! Redirecting...')
       setTimeout(() => setView('login'), 2000)
     } catch (err) {
       setError(err.message)
@@ -30,34 +30,38 @@ function Signup({ setView }) {
   }
 
   return (
-    <div>
-      <h2>Sign Up</h2>
-      <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+    <div className="container">
+      <h1 className="title">Mini Drive</h1>
+      <p className="subtitle">Create your account and start storing files</p>
+      
+      <form onSubmit={handleSubmit} className="form">
         <input
           type="text"
-          placeholder="Username"
+          placeholder="Choose a username"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
-          style={{ padding: '10px', fontSize: '14px' }}
+          className="input"
           required
         />
         <input
           type="password"
-          placeholder="Password"
+          placeholder="Create a password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          style={{ padding: '10px', fontSize: '14px' }}
+          className="input"
           required
         />
-        <button type="submit" style={{ padding: '10px', fontSize: '14px', cursor: 'pointer' }}>
+        <button type="submit" className="button">
           Sign Up
         </button>
       </form>
-      {message && <p style={{ color: 'green', marginTop: '10px' }}>{message}</p>}
-      {error && <p style={{ color: 'red', marginTop: '10px' }}>{error}</p>}
-      <p style={{ marginTop: '20px', textAlign: 'center' }}>
+      
+      {message && <p className="success">{message}</p>}
+      {error && <p className="error">{error}</p>}
+      
+      <p className="link-text">
         Already have an account?{' '}
-        <span onClick={() => setView('login')} style={{ color: 'blue', cursor: 'pointer' }}>
+        <span onClick={() => setView('login')} className="link">
           Login
         </span>
       </p>
