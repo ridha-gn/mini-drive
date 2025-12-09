@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react'
 
-const API_URL = 'http://localhost:8000'
-
+const API_URL = 'http://72.146.196.148'
 function FileManager({ token, onLogout }) {
   const [files, setFiles] = useState([])
   const [uploading, setUploading] = useState(false)

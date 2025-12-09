@@ -1,7 +1,6 @@
 import { useState } from 'react'
 
-const API_URL = 'http://localhost:8000'
-
+const API_URL = 'http://72.146.196.148'
 function Login({ setToken, setView }) {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
